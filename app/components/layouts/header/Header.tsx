@@ -15,13 +15,13 @@ const Header = () => {
           <nav className='flex justify-between w-full text-sm'>
             <ul className='flex justify-between'>
               <Link
-                className='font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 mr-4'
+                className='font-medium text-gray-500 transition-colors hover:text-gray-900 mr-4'
                 href='/'
               >
                 Home
               </Link>
               <Link
-                className='font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50'
+                className='font-medium text-gray-500 transition-colors hover:text-gray-900'
                 href='/about'
               >
                 About
