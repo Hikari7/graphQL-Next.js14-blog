@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Feed from './components/Feed';
+
+import FeedItemContainer from './components/FeedItemContainer';
 
 export default function Home() {
   return (
     <main>
-      <Feed />
+      <FeedItemContainer />
     </main>
   );
 }

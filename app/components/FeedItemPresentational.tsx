@@ -29,7 +29,9 @@ type feedItem_query = {
   author: string;
 };
 
-const FeedItem: React.FC<{ query: feedItem_query }> = ({ query }) => {
+const FeedItemPresentational: React.FC<{ query: feedItem_query }> = ({
+  query,
+}) => {
   return (
     <div>
       <>
@@ -41,7 +43,7 @@ const FeedItem: React.FC<{ query: feedItem_query }> = ({ query }) => {
           <CardContent>{query.contents}</CardContent>
           <CardFooter>
             <Link
-              href={'/posts/1'}
+              href={`/posts/${query.id}`}
               className='text-right text-xs text-blue-300'
             >
               Read more
@@ -53,4 +55,4 @@ const FeedItem: React.FC<{ query: feedItem_query }> = ({ query }) => {
   );
 };
 
-export default FeedItem;
+export default FeedItemPresentational;
