@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import {
   Card,
@@ -8,24 +10,45 @@ import {
   CardTitle,
 } from './ui/card';
 import Link from 'next/link';
+import { gql } from '@apollo/client';
 
-const FeedItem = () => {
+export const FeedItem_QueryFragment = gql`
+  # on の後に続く型名は、GraphQLスキーマ内で定義された具体的な型を指す
+  fragment feedItem_query on FeedItem {
+    id
+    title
+    contents
+    author
+  }
+`;
+
+type feedItem_query = {
+  id: string;
+  title: string;
+  contents: string;
+  author: string;
+};
+
+const FeedItem: React.FC<{ query: feedItem_query }> = ({ query }) => {
   return (
     <div>
-      <Card>
-        <CardHeader>
-          <CardTitle>Create project</CardTitle>
-          <CardDescription>
-            Deploy your new project in one-click.
-          </CardDescription>
-        </CardHeader>
-        <CardContent></CardContent>
-        <CardFooter className='flex justify-between'>
-          <Link href={'/posts/1'} className='text-blue-300'>
-            Read more
-          </Link>
-        </CardFooter>
-      </Card>
+      <>
+        <Card>
+          <CardHeader>
+            <CardTitle>{query.title}</CardTitle>
+            <CardDescription>{query.author}</CardDescription>
+          </CardHeader>
+          <CardContent>{query.contents}</CardContent>
+          <CardFooter>
+            <Link
+              href={'/posts/1'}
+              className='text-right text-xs text-blue-300'
+            >
+              Read more
+            </Link>
+          </CardFooter>
+        </Card>
+      </>
     </div>
   );
 };
