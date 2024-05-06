@@ -10,38 +10,45 @@ import {
   CardTitle,
 } from './ui/card';
 import Link from 'next/link';
-import { gql, useQuery } from '@apollo/client';
+import { gql } from '@apollo/client';
 
-const FeedItem = () => {
-  const FEEDITEM = gql`
-    query Assets {
-      feedItem(where: { id: "clvtk5l7me8u50711ydvcqu9w" }) {
-        title
-        contents
-        author
-      }
-    }
-  `;
+export const FeedItem_QueryFragment = gql`
+  # on の後に続く型名は、GraphQLスキーマ内で定義された具体的な型を指す
+  fragment feedItem_query on FeedItem {
+    id
+    title
+    contents
+    author
+  }
+`;
 
-  const { data, loading, error } = useQuery(FEEDITEM);
+type feedItem_query = {
+  id: string;
+  title: string;
+  contents: string;
+  author: string;
+};
 
-  if (loading) return 'Loading...';
-  if (error) return `error ${error}`;
-
+const FeedItem: React.FC<{ query: feedItem_query }> = ({ query }) => {
   return (
     <div>
-      <Card>
-        <CardHeader>
-          <CardTitle>{data.feedItem.title}</CardTitle>
-          <CardDescription>{data.feedItem.author}</CardDescription>
-        </CardHeader>
-        <CardContent>{data.feedItem.contents}</CardContent>
-        <CardFooter className='flex justify-between'>
-          <Link href={'/posts/1'} className='text-blue-300'>
-            Read more
-          </Link>
-        </CardFooter>
-      </Card>
+      <>
+        <Card>
+          <CardHeader>
+            <CardTitle>{query.title}</CardTitle>
+            <CardDescription>{query.author}</CardDescription>
+          </CardHeader>
+          <CardContent>{query.contents}</CardContent>
+          <CardFooter>
+            <Link
+              href={'/posts/1'}
+              className='text-right text-xs text-blue-300'
+            >
+              Read more
+            </Link>
+          </CardFooter>
+        </Card>
+      </>
     </div>
   );
 };
