@@ -3,9 +3,11 @@
 import React from 'react';
 
 import { gql, useQuery } from '@apollo/client';
-import FeedItem, { FeedItem_QueryFragment } from './FeedItem';
+import FeedItemPresentational, {
+  FeedItem_QueryFragment,
+} from './FeedItemPresentational';
 
-const Feed = () => {
+const FeedItemContainer = () => {
   const FEED_QUERY = gql`
     query Assets {
       feedItems {
@@ -20,15 +22,14 @@ const Feed = () => {
 
   if (loading) return 'Loading...';
   if (error) return `Error: ${error.message}`;
-  console.log('data>>>', data.feedItems);
 
   return (
     <div className='grid lg:grid-cols-3 gap-4 p-4'>
       {data.feedItems.map((item: any) => (
-        <FeedItem query={item} key={item.id} />
+        <FeedItemPresentational query={item} key={item.id} />
       ))}
     </div>
   );
 };
 
-export default Feed;
+export default FeedItemContainer;

@@ -29,7 +29,9 @@ type feedItem_query = {
   author: string;
 };
 
-const FeedItem: React.FC<{ query: feedItem_query }> = ({ query }) => {
+const FeedItemPresentational: React.FC<{ query: feedItem_query }> = ({
+  query,
+}) => {
   return (
     <div>
       <>
@@ -53,4 +55,4 @@ const FeedItem: React.FC<{ query: feedItem_query }> = ({ query }) => {
   );
 };
 
-export default FeedItem;
+export default FeedItemPresentational;
