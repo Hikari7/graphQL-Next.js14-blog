@@ -13,20 +13,6 @@ const Header = () => {
             Sugoi Blog
           </Link>
           <nav className='flex justify-between w-full text-sm'>
-            <ul className='flex justify-between'>
-              <Link
-                className='font-medium text-gray-500 transition-colors hover:text-gray-900 mr-4'
-                href='/'
-              >
-                Home
-              </Link>
-              <Link
-                className='font-medium text-gray-500 transition-colors hover:text-gray-900'
-                href='/about'
-              >
-                About
-              </Link>
-            </ul>
             <ul className='ml-auto'>
               <Link
                 className='bg-black py-3 px-4 text-white rounded-md font-medium'
