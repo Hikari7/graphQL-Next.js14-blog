@@ -21,7 +21,7 @@ const FeedDetailsContainer = () => {
     }
     ${FeedDetails_QueryFragment}
   `;
-  console.log(DETAILS_QUERY);
+
   const { data, loading, error } = useQuery(DETAILS_QUERY, {
     variables: { id },
     skip: !id, // IDがnullの場合はクエリをスキップ

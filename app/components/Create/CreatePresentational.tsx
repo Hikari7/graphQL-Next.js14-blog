@@ -8,31 +8,33 @@ import {
   FormField,
   FormItem,
   FormControl,
-  FormDescription,
   FormLabel,
-  FormMessage,
 } from '@/app/components/ui/form';
 import { Input } from '@/app/components/ui/input';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { FeedItemCreateInput } from '@/app/types';
 
-const CreatePresentational = () => {
+export type Props = {
+  onSubmit: SubmitHandler<FeedItemCreateInput>;
+};
+
+const CreatePresentational: React.FC<Props> = (props) => {
   const form = useForm({
     defaultValues: {
+      id: '',
       author: '',
       title: '',
       contents: '',
-      date: '',
     },
   });
-
-  function onSubmit(values: any) {
-    console.log(values);
-  }
 
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+        <form
+          onSubmit={form.handleSubmit(props.onSubmit)}
+          className='space-y-8'
+        >
           <FormField
             control={form.control}
             name='author'
@@ -41,18 +43,6 @@ const CreatePresentational = () => {
                 <FormLabel>Your name</FormLabel>
                 <FormControl>
                   <Input placeholder='author' {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='date'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Date</FormLabel>
-                <FormControl>
-                  <Input placeholder='date' {...field} />
                 </FormControl>
               </FormItem>
             )}
