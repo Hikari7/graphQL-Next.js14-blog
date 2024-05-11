@@ -1,7 +1,7 @@
-import React from 'react';
+'use client';
 
-const CreatePost = () => {
-  return <div>page</div>;
-};
+import CreateContainer from '@/app/components/Create/CreateContainer';
 
-export default CreatePost;
+export default function CreatePost() {
+  return <CreateContainer />;
+}
