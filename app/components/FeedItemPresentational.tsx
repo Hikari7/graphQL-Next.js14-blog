@@ -33,25 +33,23 @@ const FeedItemPresentational: React.FC<{ query: feedItem_query }> = ({
   query,
 }) => {
   return (
-    <div>
-      <>
-        <Card>
-          <CardHeader>
-            <CardTitle>{query.title}</CardTitle>
-            <CardDescription>{query.author}</CardDescription>
-          </CardHeader>
-          <CardContent>{query.contents}</CardContent>
-          <CardFooter>
-            <Link
-              href={`/posts/${query.id}`}
-              className='text-right text-xs text-blue-300'
-            >
-              Read more
-            </Link>
-          </CardFooter>
-        </Card>
-      </>
-    </div>
+    <>
+      <Card>
+        <CardHeader>
+          <CardTitle>{query.title}</CardTitle>
+          <CardDescription>{query.author}</CardDescription>
+        </CardHeader>
+        <CardContent>{query.contents}</CardContent>
+        <CardFooter>
+          <Link
+            href={`/posts/${query.id}`}
+            className='text-right text-xs text-blue-300'
+          >
+            Read more
+          </Link>
+        </CardFooter>
+      </Card>
+    </>
   );
 };
 

@@ -30,7 +30,6 @@ type feedDetails_query = {
 const FeedDetailsPresentational: React.FC<{ query: feedDetails_query }> = ({
   query,
 }) => {
-  console.log(query);
   return (
     <>
       <Card>
